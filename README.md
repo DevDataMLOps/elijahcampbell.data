@@ -1,6 +1,6 @@
 # Elijah Campbell — Portfolio
 
-Static Cloud and Data Engineering portfolio ready for GitHub Pages.
+Static Data/Cloud Engineering portfolio ready for GitHub Pages.
 
 ## Publish with GitHub Pages
 1. Extract this ZIP.
