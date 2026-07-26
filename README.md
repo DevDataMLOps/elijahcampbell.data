@@ -1,4 +1,4 @@
-# Elijah Campbell — Phase 2 Portfolio
+# Elijah Campbell — Portfolio
 
 Static Cloud and Data Engineering portfolio ready for GitHub Pages.
 
@@ -9,7 +9,7 @@ Static Cloud and Data Engineering portfolio ready for GitHub Pages.
 4. Select **Deploy from a branch**, `main`, and `/(root)`.
 5. Save.
 
-## Included Phase 2 features
+## Included features
 - Responsive one-page engineering portfolio
 - Dark/light theme with saved preference
 - Live GitHub repository cards with offline fallback
