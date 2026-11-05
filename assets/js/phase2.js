@@ -1,53 +1,104 @@
 (() => {
+  'use strict';
   const root = document.documentElement;
   const themeButton = document.querySelector('.theme-toggle');
-  const savedTheme = localStorage.getItem('portfolio-theme');
-  if (savedTheme) root.dataset.theme = savedTheme;
-  const setThemeIcon = () => themeButton.innerHTML = root.dataset.theme === 'light' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  try {
+    const saved = localStorage.getItem('portfolio-theme');
+    if (saved === 'light' || saved === 'dark') root.dataset.theme = saved;
+  } catch { /* Persistence is optional. */ }
+  const setThemeIcon = () => {
+    const light = root.dataset.theme === 'light';
+    themeButton.innerHTML = light ? '<i class="fas fa-sun" aria-hidden="true"></i>' : '<i class="fas fa-moon" aria-hidden="true"></i>';
+    themeButton.setAttribute('aria-label', 'Switch to ' + (light ? 'dark' : 'light') + ' theme');
+  };
   setThemeIcon();
   themeButton.addEventListener('click', () => {
     root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
-    localStorage.setItem('portfolio-theme', root.dataset.theme);
+    try { localStorage.setItem('portfolio-theme', root.dataset.theme); } catch { /* Optional. */ }
     setThemeIcon();
   });
-
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
-  navToggle.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(open));
-  });
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  const closeNav = () => {
     navLinks.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
-  }));
-
+  };
+  navToggle.addEventListener('click', () => navToggle.setAttribute('aria-expanded', String(navLinks.classList.toggle('open'))));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && navLinks.classList.contains('open')) { closeNav(); navToggle.focus(); }
+  });
   const header = document.querySelector('.site-header');
   addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 12), {passive:true});
   document.querySelector('#year').textContent = new Date().getFullYear();
-
-  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-  }), {threshold: .12});
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+  // Content remains visible without JavaScript, observer support, or animation.
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        entry.target.classList.remove('reveal-pending');
+        observer.unobserve(entry.target);
+      }
+    }), {threshold: .05});
+    document.querySelectorAll('.reveal').forEach(el => { el.classList.add('reveal-pending'); observer.observe(el); });
+  }
   const grid = document.querySelector('#repo-grid');
   const status = document.querySelector('#repo-status');
   const fallback = [
-    {name:'Project-Rising', description:'Climate-driven disease burden data platform with ETL, validation, FastAPI, and operational reliability foundations.', html_url:'https://github.com/DevDataMLOps/Project-Rising', language:'Python', stargazers_count:0, forks_count:0},
-    {name:'Cloud Data Platform', description:'Add your next infrastructure or cloud data platform repository to feature it automatically.', html_url:'https://github.com/DevDataMLOps?tab=repositories', language:'Cloud', stargazers_count:0, forks_count:0},
-    {name:'Distributed Pipeline', description:'Add a Spark, Airflow, Kafka, or warehouse engineering repository to strengthen the portfolio.', html_url:'https://github.com/DevDataMLOps?tab=repositories', language:'Data Engineering', stargazers_count:0, forks_count:0}
+    {name:'Zipco-Financial-Risk-Intelligence-platform', description:'Serverless AWS financial data engineering, scan benchmarks and operational governance.', language:'Python'},
+    {name:'Patientra', description:'Governed healthcare data pipeline, identity review and synthetic aggregate release.', language:'Python'},
+    {name:'Project-Rising', description:'Three-person climate-health hackathon project with resilient ETL, FastAPI and Streamlit.', language:'Python'},
+    {name:'Telecom-Data-Revolution', description:'Mage and BigQuery batch ETL with data contracts, quarantine and audit evidence.', language:'Python'}
   ];
-  const renderRepos = repos => {
-    grid.innerHTML = repos.slice(0, 6).map(repo => `<article class="repo-card"><i class="far fa-folder-open repo-icon"></i><h4>${escapeHtml(repo.name.replaceAll('-', ' '))}</h4><p>${escapeHtml(repo.description || 'Cloud and data engineering repository.')}</p><div class="repo-meta"><span>${escapeHtml(repo.language || 'Code')}</span><span><i class="far fa-star"></i> ${repo.stargazers_count}</span><span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span></div><a class="text-link" href="${repo.html_url}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(repo.name)} repository">Open repository <i class="fas fa-arrow-right"></i></a></article>`).join('');
+  const textElement = (tag, content, className) => {
+    const node = document.createElement(tag);
+    node.textContent = String(content);
+    if (className) node.className = className;
+    return node;
   };
-  function escapeHtml(value){return String(value).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
-  fetch('https://api.github.com/users/DevDataMLOps/repos?sort=updated&per_page=12')
-    .then(r => { if(!r.ok) throw new Error('GitHub API unavailable'); return r.json(); })
+  const validRepo = repo => repo && typeof repo.name === 'string' && /^[A-Za-z0-9_.-]+$/.test(repo.name) && repo.name !== '.' && repo.name !== '..';
+  const count = value => Number.isSafeInteger(value) && value >= 0 ? value : 0;
+  const renderRepos = (repos, live) => {
+    grid.replaceChildren();
+    repos.slice(0,6).forEach(repo => {
+      const card = document.createElement('article');
+      card.className = 'repo-card';
+      card.append(textElement('h4', repo.name.replaceAll('-', ' ')));
+      card.append(textElement('p', typeof repo.description === 'string' ? repo.description : 'Cloud and data engineering repository.'));
+      const meta = document.createElement('div');
+      meta.className = 'repo-meta';
+      meta.append(textElement('span', typeof repo.language === 'string' ? repo.language : 'Code'));
+      if (live) {
+        meta.append(textElement('span', count(repo.stargazers_count) + ' stars'));
+        meta.append(textElement('span', count(repo.forks_count) + ' forks'));
+      }
+      card.append(meta);
+      const anchor = textElement('a', 'Open repository →', 'text-link');
+      // API strings are text nodes, and API-provided URLs are never trusted.
+      anchor.href = 'https://github.com/DevDataMLOps/' + encodeURIComponent(repo.name);
+      anchor.target = '_blank';
+      anchor.rel = 'noopener noreferrer';
+      anchor.setAttribute('aria-label', 'Open ' + repo.name + ' repository');
+      card.append(anchor);
+      grid.append(card);
+    });
+  };
+  const showFallback = () => {
+    renderRepos(fallback, false);
+    status.textContent = 'GitHub feed unavailable or empty · verified repository links shown';
+  };
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  fetch('https://api.github.com/users/DevDataMLOps/repos?sort=updated&direction=desc&per_page=100', {signal:controller.signal})
+    .then(response => { if (!response.ok) throw new Error('GitHub unavailable'); return response.json(); })
     .then(repos => {
-      const filtered = repos.filter(r => !r.fork && !r.archived).sort((a,b) => Number(b.name === 'Project-Rising') - Number(a.name === 'Project-Rising'));
-      renderRepos(filtered.length ? filtered : fallback);
-      status.textContent = `${filtered.length} public repositories found`;
+      if (!Array.isArray(repos)) throw new Error('Unexpected GitHub response');
+      const filtered = repos.filter(repo => validRepo(repo) && !repo.fork && !repo.archived);
+      // Retain API activity ordering; featured case studies are independent.
+      if (!filtered.length) { showFallback(); return; }
+      renderRepos(filtered, true);
+      status.textContent = 'Showing ' + Math.min(filtered.length,6) + ' recently updated repositories';
     })
-    .catch(() => { renderRepos(fallback); status.textContent = 'Curated project view'; });
+    .catch(showFallback)
+    .finally(() => clearTimeout(timeout));
 })();

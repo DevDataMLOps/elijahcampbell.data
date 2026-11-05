@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Elijah Campbell | Data & Cloud Engineer</title>
-  <meta name="description" content="Elijah Campbell's Data and Cloud Engineering portfolio: scalable pipelines, distributed systems, cloud infrastructure, APIs, and automation." />
+  <title>Elijah Campbell | Cloud & Data Engineer — Portfolio 2.0</title>
+  <meta name="description" content="Evidence-driven cloud and data engineering: governed pipelines, measured performance, validation and operational resilience across four documented case studies." />
   <meta name="author" content="Elijah Campbell" />
-  <meta property="og:title" content="Elijah Campbell | Data & Cloud Engineer" />
-  <meta property="og:description" content="Cloud platforms, data pipelines, distributed systems, and infrastructure automation." />
+  <meta property="og:title" content="Elijah Campbell | Cloud & Data Engineer — Portfolio 2.0" />
+  <meta property="og:description" content="Evidence-driven cloud platforms and governed data pipelines, with measured outcomes and linked verification." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://devdatamlops.github.io/elijahcampbell.data/" />
+  <link rel="canonical" href="https://devdatamlops.github.io/elijahcampbell.data/" />
   <meta name="theme-color" content="#07111f" />
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
   <link rel="stylesheet" href="assets/css/phase2.css" />
@@ -18,8 +20,8 @@
   <header class="site-header" id="top">
     <nav class="nav shell" aria-label="Primary navigation">
       <a class="brand" href="#top" aria-label="Elijah Campbell home">EC<span>.</span></a>
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-      <div class="nav-links">
+      <button class="nav-toggle" aria-controls="primary-links" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="primary-links">
         <a href="#about">About</a><a href="#projects">Projects</a><a href="#architecture">Architecture</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
       </div>
       <button class="theme-toggle" aria-label="Switch color theme" title="Switch theme"><i class="fas fa-moon"></i></button>
@@ -31,8 +33,9 @@
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-copy reveal">
         <p class="eyebrow"><span class="status-dot"></span> Open to full-time and contract roles</p>
-        <h1>Building dependable <span>cloud platforms</span> and <span>data systems.</span></h1>
-        <p class="lede">I’m Elijah Campbell, a Data and Cloud Engineer designing scalable pipelines, distributed processing systems, cloud-native infrastructure, and analytics-ready platforms.</p>
+        <h1>Cloud &amp; <span>Data Engineer</span></h1>
+        <p class="lede">I’m Elijah Campbell. I build reliable cloud platforms and governed data pipelines, with measurable performance, validation and infrastructure outcomes. Explore the engineering decisions and evidence behind my work.</p>
+        <p class="direction">Emerging direction: MLOps and AI infrastructure, building on data quality and reliable delivery.</p>
         <div class="actions">
           <a class="btn primary" href="#projects">Explore my work <i class="fas fa-arrow-down"></i></a>
           <a class="btn secondary"
@@ -67,10 +70,10 @@
     </section>
 
     <section class="metrics shell reveal" aria-label="Selected engineering outcomes">
-      <article><strong>30%</strong><span>Pipeline latency reduction</span></article>
-      <article><strong>40%</strong><span>Query performance improvement</span></article>
-      <article><strong>£10K</strong><span>Quarterly infrastructure savings</span></article>
-      <article><strong>3</strong><span>Major cloud platforms</span></article>
+      <article><a href="#zipco"><strong>88.21%</strong><span>ZIPCO · documented full-scan reduction</span></a></article>
+      <article><a href="#patientra"><strong>13/13</strong><span>PATIENTRA · historical release checks</span></a></article>
+      <article><a href="#patientra"><strong>2,938</strong><span>PATIENTRA · synthetic Gold admissions</span></a></article>
+      <article><a href="#telecom"><strong>223,966</strong><span>Telecom · verified curated records</span></a></article>
     </section>
 
     <section class="section shell" id="about">
@@ -89,24 +92,69 @@
     <section class="section projects-section" id="projects">
       <div class="shell">
         <div class="section-title reveal"><p>02 / Selected Work</p><h2>Technical projects presented as engineering case studies.</h2></div>
-        <article class="case-study reveal">
-          <div class="case-top">
-            <div><span class="project-label">Featured · Data Platform</span><h3>Project RISING</h3></div>
-            <a class="text-link" href="https://github.com/DevDataMLOps/Project-Rising" target="_blank" rel="noopener">View repository <i class="fas fa-arrow-up"></i></a>
-          </div>
-          <p class="case-intro">A climate-driven disease burden platform for ASEAN health resilience, combining validated public-health datasets, ETL foundations, analytical processing, and a FastAPI intelligence service.</p>
-          <div class="case-columns">
-            <div><small>Challenge</small><p>Fragmented health and climate datasets made reliable analysis and early-warning workflows difficult.</p></div>
-            <div><small>Engineering response</small><p>Created a modular ingestion, validation, transformation, intelligence, and API architecture with operational safeguards.</p></div>
-            <div><small>Reliability</small><p>Added schema validation, deduplication, retry and DLQ concepts, CI workflows, clearer errors, and architecture documentation.</p></div>
-          </div>
-          <div class="tech-tags"><span>Python</span><span>FastAPI</span><span>ETL</span><span>REST API</span><span>GitHub Actions</span><span>Data Validation</span></div>
+        <p class="case-guide">Start with the outcomes; expand each study for engineering decisions and controls. <a class="text-link" href="docs/portfolio-evidence.md">Read the evidence register</a>.</p>
+        <article class="case-study reveal" id="zipco" aria-labelledby="zipco-title">
+          <div class="case-top"><div><span class="project-label">Serverless AWS · Synthetic financial data</span><h3 id="zipco-title">ZIPCO Financial Risk Intelligence Platform</h3></div><a class="text-link" href="https://github.com/DevDataMLOps/Zipco-Financial-Risk-Intelligence-platform" target="_blank" rel="noopener noreferrer">GitHub repository</a></div>
+          <p class="case-intro">From a broken flat-file model to a governed financial data lake, with measured scan efficiency and operational evidence.</p>
+          <div class="case-outcome"><small>Measured technical outcome</small><p><strong>1,000,000 source records profiled.</strong> Documented Athena benchmark: <strong>88.21% less scanning</strong> for equivalent full-history CSV versus Parquet queries; <strong>95.55% additional scan reduction</strong> for the partition-pruned 2023 workload versus full-history Parquet.</p></div>
+          <details class="case-details"><summary aria-label="ZIPCO: how it works, controls and evidence">How it works, controls & evidence</summary>
+            <div class="case-columns"><div><small>Business challenge</small><p>Make fragmented financial records trustworthy and economical to query without losing correctness or auditability.</p></div><div><small>Architecture & solution</small><p>S3 → Glue validation and Snappy Parquet → Glue Catalog → Athena analytics, supported by CloudWatch monitoring and security controls.</p></div><div><small>Quality & correctness</small><p>Schema contracts, reason-coded quarantine, result-signature reconciliation, encryption, access controls and replay safeguards.</p></div></div>
+            <p><strong>Operational significance.</strong> Less data scanned supports more efficient analytics. Financial savings remain modeled implications; no realized cost saving is claimed.</p>
+
+          </details>
+          <div class="evidence-links" aria-label="ZIPCO Financial Risk Intelligence Platform verification evidence"><a class="text-link" href="https://github.com/DevDataMLOps/Zipco-Financial-Risk-Intelligence-platform/blob/2142d7101e126515ff75e19a525df0f9ea260490/docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Architecture</a> <a class="text-link" href="https://github.com/DevDataMLOps/Zipco-Financial-Risk-Intelligence-platform/blob/2142d7101e126515ff75e19a525df0f9ea260490/phases/03-optimization/benchmark-results-and-interpretation.md" target="_blank" rel="noopener noreferrer">Benchmark & method</a> <a class="text-link" href="https://github.com/DevDataMLOps/Zipco-Financial-Risk-Intelligence-platform/blob/2142d7101e126515ff75e19a525df0f9ea260490/platform/athena/README.md" target="_blank" rel="noopener noreferrer">Validation</a> <a class="text-link" href="https://github.com/DevDataMLOps/Zipco-Financial-Risk-Intelligence-platform/blob/2142d7101e126515ff75e19a525df0f9ea260490/phases/06-streaming-resilience/dashboard/README.md" target="_blank" rel="noopener noreferrer">Operational dashboard</a></div>
+          <p class="evidence-boundary"><strong>Evidence boundary.</strong> Synthetic data. The 2023 comparison changes time scope as well as partition pruning. Percentages are documented benchmark results; raw per-run AWS JSON was not independently retrieved for this portfolio. No latency or production-scale claim.</p>
+          <div class="tech-tags"><span>AWS S3</span><span>Glue</span><span>Athena</span><span>CloudWatch</span><span>Python</span><span>Parquet</span></div>
         </article>
 
-        <div class="repo-heading reveal"><div><h3>Live GitHub repositories</h3><p>Automatically loaded from GitHub and sorted by recent activity.</p></div><span id="repo-status">Connecting…</span></div>
+        <article class="case-study reveal" id="patientra" aria-labelledby="patientra-title">
+          <div class="case-top"><div><span class="project-label">Governed data · Synthetic healthcare case study</span><h3 id="patientra-title">PATIENTRA Healthcare Data Engineering</h3></div><a class="text-link" href="https://github.com/DevDataMLOps/Patientra" target="_blank" rel="noopener noreferrer">GitHub repository</a></div>
+          <p class="case-intro">Bronze → Silver → Gold data delivery with conservative cross-hospital identity resolution and controlled aggregate release.</p>
+          <div class="case-outcome"><small>Measured technical outcome</small><p>Historical synthetic release: <strong>2,938 Gold admission records</strong>, <strong>13/13 independent release checks passed</strong>, and <strong>8 of 51 aggregate breakdown rows suppressed</strong>.</p></div>
+          <details class="case-details"><summary aria-label="PATIENTRA: how it works, controls and evidence">How it works, controls & evidence</summary>
+            <div class="case-columns"><div><small>Business challenge</small><p>Reconcile fragmented hospital extracts while preserving lineage, handling uncertain identity matches and limiting disclosure.</p></div><div><small>Architecture & solution</small><p>Immutable Bronze deliveries flow through Silver cleaning and identity resolution into Gold admission features, aggregate analytics and a release-gated API.</p></div><div><small>Quality & correctness</small><p>Quarantine ambiguous values, route uncertain matches to human review, verify hashes and row reconciliation, and suppress small aggregate cells.</p></div></div>
+            <p><strong>Operational significance.</strong> A reviewable release boundary prevents unchecked or identifying outputs from reaching downstream consumers.</p>
+            <figure class="case-figure"><a href="https://github.com/DevDataMLOps/Patientra/blob/9666fa0b3743606ada4fe7f1e56bc23399237478/docs/showcase/assets/architecture-overview.png" target="_blank" rel="noopener noreferrer"><img src="assets/images/patientra-architecture.png" alt="PATIENTRA repository diagram showing its governed data architecture and release boundaries" loading="lazy" width="1600" height="900"></a><figcaption>Architecture asset from the PATIENTRA repository. Open the original for detail.</figcaption></figure>
+          </details>
+          <div class="evidence-links" aria-label="PATIENTRA Healthcare Data Engineering verification evidence"><a class="text-link" href="https://github.com/DevDataMLOps/Patientra/blob/9666fa0b3743606ada4fe7f1e56bc23399237478/docs/architecture.md" target="_blank" rel="noopener noreferrer">Architecture</a> <a class="text-link" href="https://github.com/DevDataMLOps/Patientra/blob/9666fa0b3743606ada4fe7f1e56bc23399237478/docs/evidence/phase-6-validation-presentation/README.md" target="_blank" rel="noopener noreferrer">Release evidence</a> <a class="text-link" href="https://github.com/DevDataMLOps/Patientra/blob/9666fa0b3743606ada4fe7f1e56bc23399237478/docs/validation.md" target="_blank" rel="noopener noreferrer">Release contract</a> <a class="text-link" href="https://patientra-prototype.onrender.com/prototype" target="_blank" rel="noopener noreferrer">Synthetic prototype</a></div>
+          <p class="evidence-boundary"><strong>Evidence boundary.</strong> Synthetic demonstration, not clinical validation or healthcare production readiness. Historical release figures are separate from the hosted prototype’s frozen synthetic run. Demo data access may require a maintainer-issued token; free hosting may wake slowly.</p>
+          <div class="tech-tags"><span>Python</span><span>SQL</span><span>FastAPI</span><span>Bronze / Silver / Gold</span><span>Identity resolution</span></div>
+        </article>
+
+        <article class="case-study reveal" id="rising" aria-labelledby="rising-title">
+          <div class="case-top"><div><span class="project-label">Global hackathon · Three-person team project</span><h3 id="rising-title">Project RISING</h3></div><a class="text-link" href="https://github.com/DevDataMLOps/Project-Rising" target="_blank" rel="noopener noreferrer">GitHub repository</a></div>
+          <p class="case-intro">A team-built climate-health intelligence platform connecting resilient ingestion and ETL with FastAPI and Streamlit.</p>
+          <p><strong>My contribution.</strong> Commits attributed to DevDataMLOps document batch ETL extraction, transformation and validation, GitHub Actions testing, and API readiness, security and deployment hardening.</p>
+          <div class="case-outcome"><small>Measured technical outcome</small><p>A documented local failure-recovery drill returned <strong>HTTP 503</strong> with a missing required dataset and <strong>HTTP 200</strong> after restoration, on the first verification request.</p></div>
+          <details class="case-details"><summary aria-label="Project RISING: how it works, controls and evidence">How it works, controls & evidence</summary>
+            <div class="case-columns"><div><small>Business challenge</small><p>Keep fragmented climate and public-health data usable when records arrive late, malformed or duplicated.</p></div><div><small>Architecture & solution</small><p>Batch and event ingestion → validated, deduplicated data → explainable climate-health scoring → FastAPI and Streamlit.</p></div><div><small>Quality & correctness</small><p>Schema validation, bounded retry, buffering, checkpoints and dead-letter isolation; regression tests cover pipeline and API behavior.</p></div></div>
+            <p><strong>Operational significance.</strong> Fail-closed readiness and recoverable ingestion make data availability failures visible to operators.</p>
+
+          </details>
+          <div class="evidence-links" aria-label="Project RISING verification evidence"><a class="text-link" href="https://github.com/DevDataMLOps/Project-Rising/commit/0a11a0f1eff78d5659b9c9142d15ee63c470a3cd" target="_blank" rel="noopener noreferrer">My ETL contribution</a> <a class="text-link" href="https://github.com/DevDataMLOps/Project-Rising/commit/491dd654023a5d0dbc5808fb440b24fdccd29acd" target="_blank" rel="noopener noreferrer">My API & deployment contribution</a> <a class="text-link" href="https://github.com/DevDataMLOps/Project-Rising/blob/0c0824d89d6f6a39abbc466fc0869d01c9d9c5bf/docs/architecture/01_system_architecture.md" target="_blank" rel="noopener noreferrer">Architecture</a> <a class="text-link" href="https://github.com/DevDataMLOps/Project-Rising/blob/0c0824d89d6f6a39abbc466fc0869d01c9d9c5bf/docs/operations/evidence/2026-07-23-readiness-failure-recovery.md" target="_blank" rel="noopener noreferrer">Recovery evidence</a> <a class="text-link" href="https://github.com/DevDataMLOps/Project-Rising/blob/0c0824d89d6f6a39abbc466fc0869d01c9d9c5bf/tests/test_production_hardening.py" target="_blank" rel="noopener noreferrer">Regression tests</a> <a class="text-link" href="https://github.com/DevDataMLOps/Project-Rising/blob/0c0824d89d6f6a39abbc466fc0869d01c9d9c5bf/docs/operations/pilot_runbook.md" target="_blank" rel="noopener noreferrer">Deployment runbook</a> <a class="text-link" href="https://project-rising.streamlit.app/" target="_blank" rel="noopener noreferrer">Team dashboard</a></div>
+          <p class="evidence-boundary"><strong>Evidence boundary.</strong> Team outcome, not sole authorship. Hackathon participation is documented; no unverified award or placement is claimed. Simulated events and a local readiness drill do not establish production recovery targets or clinical forecasting accuracy. The hosted Streamlit demo may be asleep; repository evidence remains available.</p>
+          <div class="tech-tags"><span>Python</span><span>FastAPI</span><span>Streamlit</span><span>PostgreSQL</span><span>pytest</span><span>GitHub Actions</span></div>
+        </article>
+
+        <article class="case-study reveal" id="telecom" aria-labelledby="telecom-title">
+          <div class="case-top"><div><span class="project-label">Batch ETL · BigQuery execution evidence</span><h3 id="telecom-title">Telecom Data Revolution</h3></div><a class="text-link" href="https://github.com/DevDataMLOps/Telecom-Data-Revolution" target="_blank" rel="noopener noreferrer">GitHub repository</a></div>
+          <p class="case-intro">A contract-driven telecom pipeline that separates trustworthy analytics data from rejected records before warehouse delivery.</p>
+          <div class="case-outcome"><small>Measured technical outcome</small><p><strong>243,553 source records</strong> reconciled to <strong>223,966 curated</strong> and <strong>19,587 quarantined records</strong>. Checked-in BigQuery execution evidence confirms both destination counts.</p></div>
+          <details class="case-details"><summary aria-label="Telecom: how it works, controls and evidence">How it works, controls & evidence</summary>
+            <div class="case-columns"><div><small>Business challenge</small><p>Prepare telecom churn records for analytics without silently discarding invalid data or obscuring load outcomes.</p></div><div><small>Architecture & solution</small><p>Mage orchestrates Python validation and transformation, loading curated, quarantine and append-only audit tables into BigQuery.</p></div><div><small>Quality & correctness</small><p>Explicit schema and domain checks, reason-coded quarantine, deterministic full-refresh loading and warehouse count verification.</p></div></div>
+            <p><strong>Operational significance.</strong> Analysts receive contract-valid records while operators retain rejected records and an audit trail for investigation.</p>
+
+          </details>
+          <div class="evidence-links" aria-label="Telecom Data Revolution verification evidence"><a class="text-link" href="https://github.com/DevDataMLOps/Telecom-Data-Revolution/blob/f8eccab9d9baae21118aee61eb5060b4e86e2198/docs/architecture/phase-2-data-contract.md" target="_blank" rel="noopener noreferrer">Architecture & contract</a> <a class="text-link" href="https://github.com/DevDataMLOps/Telecom-Data-Revolution/blob/f8eccab9d9baae21118aee61eb5060b4e86e2198/docs/data_profiling/telecom_profile.json" target="_blank" rel="noopener noreferrer">Source profile</a> <a class="text-link" href="https://github.com/DevDataMLOps/Telecom-Data-Revolution/blob/f8eccab9d9baae21118aee61eb5060b4e86e2198/scripts/verify_bigquery_counts.py" target="_blank" rel="noopener noreferrer">BigQuery verification</a> <a class="text-link" href="https://github.com/DevDataMLOps/Telecom-Data-Revolution/blob/f8eccab9d9baae21118aee61eb5060b4e86e2198/docs/screenshots/telecom-bigquery-verification.png" target="_blank" rel="noopener noreferrer">Execution screenshot</a></div>
+          <p class="evidence-boundary"><strong>Evidence boundary.</strong> Repository profiling, verification code and an execution screenshot were reviewed; the source dataset is excluded from Git and cloud queries were not rerun. Production-style project, not a claim of production operation or reduced churn.</p>
+          <div class="tech-tags"><span>Python</span><span>Mage</span><span>BigQuery</span><span>SQL</span><span>pandas</span><span>Data contracts</span></div>
+        </article>
+
+        <div class="repo-heading reveal"><div><h3>Live GitHub repositories</h3><p>Automatically loaded from GitHub and sorted by recent activity.</p></div><span id="repo-status" role="status">Connecting…</span></div>
         <div class="repo-grid" id="repo-grid" aria-live="polite">
           <article class="repo-card skeleton"></article><article class="repo-card skeleton"></article><article class="repo-card skeleton"></article>
         </div>
+        <noscript><p>Enable JavaScript for the live feed, or use the verified case-study links above and the GitHub link below.</p></noscript>
         <div class="center-action reveal"><a class="btn secondary" href="https://github.com/DevDataMLOps?tab=repositories" target="_blank" rel="noopener">View all repositories <i class="fab fa-github"></i></a></div>
       </div>
     </section>
@@ -131,8 +179,8 @@
       <div class="shell">
         <div class="section-title reveal"><p>04 / Experience</p><h2>Hands-on delivery across data and cloud systems.</h2></div>
         <div class="timeline">
-          <article class="reveal"><div class="date">May 2026 — Present</div><div class="line"><span></span></div><div class="role"><small>Amdari · Manchester, UK</small><h3>Data Engineer Intern</h3><p>Led scalable cloud data-pipeline development, supported storage and infrastructure optimization, improved production query performance, and contributed to distributed processing and real-time analytics initiatives.</p><ul><li>Reduced pipeline processing latency by 30%.</li><li>Improved database and query performance by 40%.</li><li>Helped reduce infrastructure costs by £10,000 per quarter.</li></ul></div></article>
-          <article class="reveal"><div class="date">2026</div><div class="line"><span></span></div><div class="role"><small>Global Hackathon</small><h3>Lead Data Pipeline Engineer · Project RISING</h3><p>Owned repository structure, pipeline architecture, ETL foundations, dataset integration, API support, documentation, CI, and reliability improvements for a public-health data platform.</p></div></article>
+          <article class="reveal"><div class="date">Project-based training</div><div class="line"><span></span></div><div class="role"><small>Amdari · Project-based training</small><h3>Cloud &amp; Data Engineering</h3><p>ZIPCO and Telecom Data Revolution provided project-based engineering practice in AWS data platforms, governed pipelines, BigQuery delivery and validation. Outcomes are documented in the case studies above.</p></div></article>
+          <article class="reveal"><div class="date">2026</div><div class="line"><span></span></div><div class="role"><small>Global hackathon · Three-person team</small><h3>Project RISING</h3><p>Contributed batch ETL extraction, transformation and validation, automated testing, and API readiness and deployment hardening. Linked DevDataMLOps commits distinguish my contributions from the three-person team’s overall platform.</p></div></article>
         </div>
       </div>
     </section>

@@ -4,3 +4,28 @@ html[data-theme="light"]{--bg:#f4f8fc;--surface:#fff;--surface2:#edf4fa;--text:#
 @media(max-width:900px){.nav-links{position:fixed;inset:76px 20px auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:none;flex-direction:column}.nav-links.open{display:flex}.nav-toggle{display:block;margin-left:auto}.hero{grid-template-columns:1fr;min-height:auto;padding-top:70px}.terminal-card{max-width:620px}.metrics{grid-template-columns:1fr 1fr}.metrics article:nth-child(2){border-right:0}.metrics article:nth-child(-n+2){border-bottom:1px solid var(--line)}.section-title,.about-grid,.contact-box{grid-template-columns:1fr;gap:28px}.case-columns,.repo-grid,.principles,.skills-board{grid-template-columns:1fr 1fr}.pipeline{align-items:stretch}.timeline article{grid-template-columns:150px 20px 1fr}}
 @media(max-width:620px){.shell{width:min(100% - 26px,1180px)}.hero h1{font-size:3.45rem}.metrics,.case-columns,.repo-grid,.principles,.skills-board{grid-template-columns:1fr}.metrics article{border-right:0;border-bottom:1px solid var(--line)!important}.metrics article:last-child{border:0!important}.section{padding:78px 0}.case-study{padding:25px}.case-top,.repo-heading,footer{align-items:flex-start;flex-direction:column}.pipeline{flex-direction:column}.flow{transform:rotate(90deg)}.timeline article{grid-template-columns:1fr}.line{display:none}.contact-box{padding:30px}.social-row{gap:14px}.theme-toggle{margin-left:0}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* Portfolio 2.0: extend the original design tokens and layout. */
+.direction,.case-guide{color:var(--muted)}
+.case-guide{margin-bottom:32px}.case-study + .case-study{margin-top:28px}
+.case-top>div{min-width:0}.case-top>.text-link{flex-shrink:0;align-self:flex-start}
+.case-top h3{font-size:clamp(1.8rem,3.5vw,2.5rem);line-height:1.15}
+.case-outcome{border-left:3px solid var(--accent);padding:12px 20px;background:var(--surface);margin:24px 0}
+.case-outcome small{color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.case-outcome p{margin:8px 0}.case-details summary{cursor:pointer;color:var(--accent2);font-weight:800;padding:12px 0}
+.case-details>p,.evidence-boundary,figcaption{color:var(--muted)}
+.evidence-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin:20px 0}
+.evidence-links a{text-decoration:underline;text-underline-offset:4px}
+.evidence-boundary{font-size:.88rem;border-top:1px solid var(--line);padding-top:18px}
+.case-figure{margin:24px 0}.case-figure img{width:100%;height:auto;display:block;border-radius:10px}.case-figure figcaption{font-size:.8rem;margin-top:8px}
+:focus-visible{outline:3px solid var(--accent2);outline-offset:5px}
+[id]{scroll-margin-top:100px}.hero>*{min-width:0}.terminal-card pre{overflow-wrap:anywhere}
+.repo-card,.contact-links,.metrics article{min-width:0;overflow-wrap:anywhere}
+.contact-links .btn{max-width:100%;overflow-wrap:anywhere;word-break:break-word}
+.reveal{opacity:1;transform:none}.reveal-pending{opacity:0;transform:translateY(18px)}
+html[data-theme="light"] .btn.primary{color:#fff}
+html[data-theme="light"] .contact-box{background:#b9f3e5}
+@media(max-width:900px){.pipeline{flex-wrap:wrap;overflow:visible}.node{min-width:140px}.case-top{flex-wrap:wrap}}
+@media(max-width:620px){.hero h1{font-size:clamp(2.6rem,12vw,3.45rem)}.terminal-card{transform:none}.terminal-card pre{padding:22px}.contact-box{padding:24px}.case-study{padding:22px}.case-outcome{padding:12px 14px}}
+@media(prefers-reduced-motion:reduce){.reveal-pending{opacity:1;transform:none}.btn:hover,.repo-card:hover{transform:none}}
+.nav-toggle span{display:block;width:18px;height:2px;background:currentColor;margin:4px auto}
